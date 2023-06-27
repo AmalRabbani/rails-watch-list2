@@ -1,0 +1,14 @@
+<% @bookmarks.each do |bookmark| %>
+<%= bookmark.movie.title %>
+<%= bookmark.movie.overview %>
+<%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% end %>
+
+<h1>Bookmarks#new</h1>
+<div class="container py-5">
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment %>
+    <%= f.association :movie, prompt: "Select a movie" %>
+    <%= f.submit %>
+<% end %>
+</div>
