@@ -1,3 +1,17 @@
-<% @lists.each do |list| %>
-<%= link_to list.name, list_path(list) %>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('list_background.jpg') %>);">
+  <div class="container">
+    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+  </div>
+</div>
+<div class="cards">
+  <% @lists.each do |list| %>
+    <% list.bookmarks.each do |bookmark| %>
+      <div class="card">
+        <%= image_tag bookmark.movie.poster_url, width: 150, class: "card-image" %>
+        <div class="card-body">
+          <h1 class="card-title"><%= link_to list.name, list_path(list) %></h1>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
